@@ -5123,7 +5123,7 @@ input[type=color] {
   margin-bottom: 0;
 }
 .td-about-right-space {
-  padding-bottom: 280px;
+  padding-bottom: 40px;
 }
 @media only screen and (min-width: 1200px) and (max-width: 1399px) {
   .td-about-right-space {
