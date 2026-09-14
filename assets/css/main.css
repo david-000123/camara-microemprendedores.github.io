@@ -3794,6 +3794,7 @@ input[type=color] {
   line-height: 150%;
   color: var(--td-grey-2);
   margin-bottom: 0;
+  padding-bottom: 30px;
 }
 .td-footer-bottom-copyright a {
   color: var(--td-theme-primary);
