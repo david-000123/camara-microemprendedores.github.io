@@ -1904,7 +1904,7 @@ input[type=color] {
 }
 @media (max-width: 575px) {
   .tdoffcanvas__logo img {
-    width: 150px;
+    width: 120px;
   }
 }
 .tdoffcanvas__close-btn button {
@@ -6322,6 +6322,20 @@ input[type=color] {
 .td-contact-form button:hover {
   background: rgba(32, 40, 45, 0.9019607843);
 }
+.td-contact-form input.is-invalid,
+.td-contact-form input.is-invalid:focus,
+.td-contact-form textarea.is-invalid,
+.td-contact-form textarea.is-invalid:focus {
+  border-bottom: 1px solid #dc3545;
+  color: #dc3545;
+}
+.td-contact-form input.is-invalid::placeholder,
+.td-contact-form textarea.is-invalid::placeholder {
+  color: #dc3545;
+}
+.td-contact-form .ajax-response.error {
+  color: #dc3545;
+}
 .td-contact-form-wrap {
   box-shadow: 0 30px 60px 0 rgba(0, 0, 0, 0.06);
   background: var(--td-common-white);
@@ -7474,6 +7488,67 @@ input[type=color] {
   border-bottom: 1px solid var(--td-common-line);
   text-align: center;
   line-height: 50px;
+}
+.td-service-widget-input input.is-invalid,
+.td-service-widget-input input.is-invalid:focus,
+.td-service-widget-textarea textarea.is-invalid,
+.td-service-widget-textarea textarea.is-invalid:focus {
+  border: 1px solid #dc3545;
+  color: #dc3545;
+}
+.td-service-widget-input input.is-invalid::placeholder,
+.td-service-widget-textarea textarea.is-invalid::placeholder {
+  color: #dc3545;
+}
+.td-service-widget-item .ajax-response {
+  font-size: 14px;
+  margin-bottom: 0;
+}
+.td-service-widget-item .ajax-response.error {
+  color: #dc3545;
+}
+
+.form-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 9999999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background: rgba(32, 40, 45, 0.7);
+}
+.form-modal[hidden] {
+  display: none;
+}
+.form-modal-content {
+  position: relative;
+  width: 100%;
+  max-width: 480px;
+  padding: 50px 40px 40px 40px;
+  background: var(--td-common-white);
+  box-shadow: 0 30px 60px 0 rgba(0, 0, 0, 0.2);
+  text-align: center;
+}
+.form-modal-close {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 30px;
+  line-height: 1;
+  color: var(--td-theme-primary);
+  background: transparent;
+  border: 0;
+}
+.form-modal-title {
+  font-size: 24px;
+  margin-bottom: 15px;
+}
+.form-modal-text {
+  margin-bottom: 0;
 }
 
 #service-bg-img {

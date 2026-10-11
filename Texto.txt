@@ -1,0 +1,467 @@
+ANÁLISIS Y PLANIFICACIÓN: INDEX.HTML Y BLOG.HTML
+Cámara de Trabajadores Microemprendedores de la República Argentina
+Documento de planificación. No se modificó ningún archivo del sitio.
+
+====================================================================
+ÍNDICE
+====================================================================
+1. Resumen
+2. index.html: qué falta, sección por sección
+3. blog.html: estado actual
+4. blog.html: plan de contenido
+5. Contenido externo: qué mostrar y con qué reglas
+6. Decisiones pendientes
+
+
+====================================================================
+1. RESUMEN
+====================================================================
+
+index.html tiene los textos principales adaptados, pero muchos enlaces
+todavía apuntan a páginas de la plantilla (portfolio, team-details,
+blog-details, service-details), a "#" o a una página que no existe
+(awards-details.html). Hay que definir a dónde lleva cada uno.
+
+blog.html está entero en el estado de la plantilla: textos en inglés,
+autora y fechas ficticias, botones que no funcionan y un footer con
+datos de otra empresa. Hay que redactarlo desde cero.
+
+Fuente de redacción: el "Informe Cámara de Trabajadores
+Microemprendedores" (objetivos, problemáticas, beneficios, estructura,
+actividades, programas, misión y visión).
+
+
+====================================================================
+2. INDEX.HTML: QUÉ FALTA, SECCIÓN POR SECCIÓN
+====================================================================
+
+Leyenda:
+  [ROTO]       el enlace lleva a una página que no existe
+  [PLANTILLA]  lleva a una página que todavía es de demostración
+  [VACÍO]      lleva a "#" o no tiene destino
+  [OK]         funciona y tiene sentido
+
+--------------------------------------------------------------------
+2.1 Barra superior del header
+--------------------------------------------------------------------
+Enlace          Destino actual   Estado    Propuesta
+Acerca de       (vacío)          [VACÍO]   about.html
+Novedades       #                [VACÍO]   blog.html
+Favoritos       #                [VACÍO]   Quitar (no hay función de
+                                           favoritos) o cambiar por
+                                           "Asociate" -> contact.html
+Ayuda           #                [VACÍO]   faq.html
+
+--------------------------------------------------------------------
+2.2 Menú principal
+--------------------------------------------------------------------
+Inicio > submenú con 5 homes de la plantilla (Business Home, Advisory
+Home, Business Strategy, Insurance Home) [PLANTILLA]
+  Propuesta: quitar el submenú y dejar "Inicio" -> index.html.
+
+La Cámara
+  Quiénes Somos        about.html            [OK]
+  Autoridades          team.html             [PLANTILLA] título y
+                                             lang sin adaptar
+  Marco Legal          team-details.html     [PLANTILLA] no tiene
+                                             relación con el tema.
+                                             Propuesta:
+                                             servicio-representacion.html
+                                             o una página propia
+  Misión y Visión      blog-details.html     [PLANTILLA] Propuesta:
+                                             about.html (la sección
+                                             "Misión y Visión" ya
+                                             existe ahí)
+  Preguntas frecuentes faq.html              [PLANTILLA] sin adaptar
+
+Blog                   blog.html             [PLANTILLA] ver punto 3
+
+Servicios              service.html          [OK]
+  Capacitaciones       service-details.html  -> servicio-formacion.html
+  Emprendedores        service-details.html  -> servicio-networking.html
+  Comercio Exterior    service-details.html  No hay página de este
+                                             servicio (ver decisión 1)
+  Empresariales        service-details.html  -> servicio-beneficios.html
+  Propuesta: que el submenú repita los 5 servicios de service.html con
+  sus nombres: Formación Continua, Red de Contactos, Beneficios
+  Exclusivos, Defensa Sectorial, Ferias y Congresos.
+
+Eventos                portfolio.html        [PLANTILLA]
+  Agenda Empresarial   portfolio.html        -> servicio-eventos.html
+  Networking           portfolio-details.html-> servicio-networking.html
+
+Contacto               contact.html          [OK]
+
+Nota: este menú está copiado en cada página. Cualquier cambio hay que
+repetirlo en todas.
+
+--------------------------------------------------------------------
+2.3 Panel lateral del menú (celular)
+--------------------------------------------------------------------
+- Twitter, Instagram, Facebook y WhatsApp apuntan a "#" [VACÍO].
+  Faltan las URLs reales de las redes de la Cámara.
+- El ícono de WhatsApp se carga desde un sitio externo (icons8.com).
+  En el proyecto ya existe assets/img/icon/wassp.png: conviene usar
+  ese archivo local.
+- El enlace de WhatsApp debería usar el formato
+  https://wa.me/54XXXXXXXXXX con el número real.
+
+--------------------------------------------------------------------
+2.4 Hero
+--------------------------------------------------------------------
+"Solicita asesoramiento y oportunidades" -> contact.html   [OK]
+
+--------------------------------------------------------------------
+2.5 Bloque de 4 paneles (Capacitaciones y otros)
+--------------------------------------------------------------------
+Los 4 títulos y los 4 botones llevan a about.html. Propuesta:
+Panel                                         Botón                Destino propuesto
+Capacitarse es invertir en el futuro...       Ver capacitaciones   servicio-formacion.html
+Historias únicas detrás de cada emprend...    Quiero asesorarme    contact.html
+Productos argentinos para nuevos mercados     Comenzar el viaje    Comercio Exterior (decisión 1)
+Tu mapa hacia el éxito empresarial            Descubrir soluciones service.html
+
+--------------------------------------------------------------------
+2.6 Servicios (5 tarjetas)
+--------------------------------------------------------------------
+Tarjeta              Destino actual                Propuesta
+Cursos y Talleres    servicio-formacion.html       [OK]
+Marco Legal          servicio-representacion.html  [OK]
+Exportación          service-details.html          Comercio Exterior (decisión 1)
+Enfoque B2B          service-details.html          servicio-networking.html
+Agenda Activa        service-details.html          servicio-eventos.html
+
+--------------------------------------------------------------------
+2.7 "A quiénes representamos" (9 filas)
+--------------------------------------------------------------------
+- La imagen de cada fila lleva a awards-details.html [ROTO]: esa
+  página no existe.
+- El título y la flecha de cada fila llevan a "#" [VACÍO].
+- Las 9 filas usan la misma imagen (assets/img/awards/01.png).
+- Propuesta: que las filas no sean enlaces, o que todas lleven a
+  contact.html con la invitación "Asociate".
+- Propuesta de bajadas, más claras que las actuales ("Entramado
+  productivo.", "Generación ingresos.", etc.):
+    Nuestra comunidad            Una red federal que crece unida.
+    Microemprendedores           Quienes generan sus propios ingresos.
+    Trabajadores independientes  Profesionales y oficios autónomos.
+    Productores locales          Valor y producción de cada región.
+    Cooperativas                 Trabajo asociado y solidario.
+    Microempresas                Negocios en etapa de consolidación.
+    Pequeñas empresas            Generadoras de empleo local.
+    Emprendimientos familiares   Tradición y trabajo que se heredan.
+    Nuevos emprendimientos       Proyectos que recién comienzan.
+
+--------------------------------------------------------------------
+2.8 "Beneficios que brinda la Cámara" (pestañas)
+--------------------------------------------------------------------
+- Botón "Asociarme a la Cámara" -> portfolio.html [PLANTILLA].
+  Propuesta: contact.html.
+- Las 18 tarjetas llevan a portfolio-details.html [PLANTILLA].
+  Propuesta por pestaña:
+    Capacitación (Comercio electrónico, Administración, Marketing,
+      Finanzas, Ventas)                       -> servicio-formacion.html
+    Estructura Organizacional (Red de contactos, Oportunidades
+      comerciales, Alianzas estratégicas, Vinculación entre
+      emprendedores)                          -> servicio-networking.html
+    Actividades (Ferias, Exposiciones, Congresos, Encuentros
+      empresariales)                          -> servicio-eventos.html
+    Programas de apoyo (Mentorías, Asistencia técnica, Programas de
+      financiamiento)                         -> service.html#programas
+    Bolsa de empleo y servicios, Mujeres emprendedoras
+                                              -> sin página todavía
+- Inconsistencia: la pestaña se llama "Estructura Organizacional" pero
+  su contenido es networking. Hay dos opciones:
+    a) Renombrar la pestaña a "Red de Contactos".
+    b) Mantener el nombre y cambiar el contenido por lo que dice el
+       informe: Comisión Directiva (Presidente, Vicepresidente,
+       Secretario, Tesorero, Vocales) y Áreas de trabajo
+       (Capacitación, Comunicación, Relaciones institucionales,
+       Comercio y producción, Mujeres emprendedoras, Innovación y
+       tecnología).
+- "vinculación entre emprendedores" empieza en minúscula; corregir a
+  "Vinculación entre emprendedores".
+
+--------------------------------------------------------------------
+2.9 Blog en la home (sección 5)
+--------------------------------------------------------------------
+- Antetítulo "Insights" (en inglés). Propuesta: "Novedades".
+- Título "Enfoque Informativo y Moderno" (no dice de qué trata).
+  Propuesta: "Información útil para tu emprendimiento".
+- Los 6 artículos y sus flechas llevan al mismo blog-details.html
+  [PLANTILLA]. Hace falta una página por artículo (decisión 2).
+- Falta un botón "Ver todas las novedades" -> blog.html.
+- Detalle técnico: la sección abre con "td-blog-area-start" y cierra
+  con "td-news-area-end"; conviene unificar el comentario.
+
+--------------------------------------------------------------------
+2.10 Footer
+--------------------------------------------------------------------
+- Anclas Inicio, Servicio, Emprendemos A, Beneficios, Noticias [OK]:
+  las 5 secciones existen (section1 a section5).
+  Propuesta de textos: "Servicios" en lugar de "Servicio" y "A quiénes
+  representamos" en lugar de "Emprendemos A".
+- Política de privacidad, Términos y condiciones, Política de cookies
+  -> "#" [VACÍO]. Faltan estas tres páginas. Son textos legales: deben
+  redactarse o revisarse con asesoramiento legal, sobre todo porque el
+  formulario de contacto recoge datos personales.
+  "política de privacidad" empieza en minúscula; corregir.
+- Redes: Facebook, X, YouTube y Behance -> "#" [VACÍO]. Behance es una
+  red de diseñadores y no tiene relación con la Cámara. Propuesta:
+  reemplazarla por Instagram o WhatsApp, según las redes que use la
+  Cámara.
+- Enlace del copyright -> "#". Propuesta: index.html.
+
+
+====================================================================
+3. BLOG.HTML: ESTADO ACTUAL
+====================================================================
+
+Todo lo visible es de la plantilla:
+
+Zona            Contenido actual
+Título/idioma   "Adina - Business & Finance html Template", lang="zxx"
+Header          Menú anterior (Home, Pages, Featured...), no el adaptado
+Breadcrumb      "News Insights", "Pages / Blog", texto gigante "Adina.Business"
+Artículos       5 entradas en inglés, todas a blog-details.html; una
+                es un video de YouTube de la plantilla
+Datos           Autora "Miranda H.", fechas de 2024, contadores falsos
+                de "Likes" y "Share"
+Botones         Me gusta / No me gusta / Compartir: no hacen nada
+Paginación      01, 02, 05: no hay más páginas
+Lateral         "Search Here" (el campo es de tipo email y no busca),
+                "Recent Post", "Popular Keyword" con cantidades
+                inventadas, banner "Ads Banner / Adina"
+Footer          Datos de otra empresa: adina@mail.com,
+                info@adina-design.com, +(123) 456 789 00 y una
+                dirección de Highland Park, Illinois
+
+Mínimo indispensable antes de publicar: reemplazar el header y el
+footer por los del sitio adaptado, porque hoy muestran datos de
+contacto que no son de la Cámara.
+
+
+====================================================================
+4. BLOG.HTML: PLAN DE CONTENIDO
+====================================================================
+
+--------------------------------------------------------------------
+4.1 Línea editorial
+--------------------------------------------------------------------
+El blog responde a las cuatro problemáticas del informe y muestra los
+beneficios de la Cámara como solución:
+  - Falta de financiamiento
+  - Informalidad
+  - Escasa capacitación y digitalización
+  - Falta de representación
+Cada artículo termina con una invitación concreta: "Solicitar
+asesoramiento", "Ver cursos" o "Asociate a la Cámara".
+
+--------------------------------------------------------------------
+4.2 Textos de la página
+--------------------------------------------------------------------
+Breadcrumb:     título "Novedades"; ruta "Inicio / Novedades";
+                texto gigante "Novedades y Recursos"
+Autor:          "Cámara de Microemprendedores" en lugar de una persona
+Fecha:          formato "10 de octubre de 2026"
+Lateral:
+  Buscar        "Buscar" con el texto de ayuda "Palabras clave". El
+                sitio es estático y no puede buscar: o se quita el
+                buscador o se implementa con JavaScript (decisión 3).
+  Recientes     "Entradas recientes": las 3 últimas notas reales.
+  Categorías    "Categorías" en lugar de "Popular Keyword", sin
+                cantidades inventadas (o con la cantidad real).
+  Banner        Imagen + "Asociate a la Cámara" -> contact.html.
+Botones:        quitar Me gusta / No me gusta (necesitan un servidor).
+                "Compartir" puede funcionar sin servidor con enlaces de
+                WhatsApp y Facebook.
+Paginación:     quitarla mientras haya menos de 10 notas.
+
+--------------------------------------------------------------------
+4.3 Categorías propuestas
+--------------------------------------------------------------------
+  Impuestos y Monotributo
+  Financiamiento
+  Formalización
+  Capacitación y Digitalización
+  Comercio Electrónico
+  Representación Institucional
+  Ferias y Eventos
+  Mujeres Emprendedoras
+
+--------------------------------------------------------------------
+4.4 Artículos
+--------------------------------------------------------------------
+Los 6 primeros son los que ya anuncia la home; hay que escribirlos. Los
+4 siguientes amplían el blog con temas del informe.
+
+Para cada uno: categoría, bajada (el resumen que se ve en la lista),
+fuente externa sugerida y botón final.
+
+1. El "Efecto Salto" del Monotributo
+   Categoría: Impuestos y Monotributo
+   Bajada:    Qué pasa cuando tu facturación supera el tope de tu
+              categoría y cómo anticiparte a la recategorización para
+              evitar sorpresas.
+   Fuente:    ARCA, sección Monotributo (montos y categorías vigentes).
+   Botón:     Solicitar asesoramiento -> contact.html
+
+2. El goteo silencioso de Ingresos Brutos
+   Categoría: Impuestos y Monotributo
+   Bajada:    Retenciones y percepciones que se descuentan en cada
+              cobro y achican tu margen sin que lo notes. Cómo revisar
+              si tenés saldo a favor.
+   Fuente:    Agencia de recaudación de cada provincia.
+   Botón:     Solicitar asesoramiento -> contact.html
+
+3. El costo financiero de la "no-formalización"
+   Categoría: Formalización
+   Bajada:    Trabajar en la informalidad parece más barato, pero
+              cierra puertas a créditos, clientes grandes y programas
+              de apoyo.
+   Fuente:    Argentina.gob.ar, Centro de ayuda PyME.
+   Botón:     Conocer Beneficios -> servicio-beneficios.html
+
+4. La trampa de las tasas de las tarjetas
+   Categoría: Financiamiento
+   Bajada:    Financiar el negocio con la tarjeta personal sale caro.
+              Cómo leer el Costo Financiero Total y comparar
+              alternativas.
+   Fuente:    BCRA, información para usuarios de servicios
+              financieros.
+   Botón:     Solicitar asesoramiento -> contact.html
+
+5. Financiamiento informal de cercanía
+   Categoría: Financiamiento
+   Bajada:    Préstamos de familiares, amigos o proveedores: cuándo
+              ayudan, qué riesgos tienen y qué alternativas formales
+              existen.
+   Fuente:    Programas de financiamiento oficiales para PyMEs y
+              emprendedores.
+   Botón:     Programas de Acompañamiento -> service.html#programas
+
+6. El "Impuesto Distancia" en las provincias
+   Categoría: Representación Institucional
+   Bajada:    Flete, logística y acceso a mercados cuestan más lejos de
+              los grandes centros. Por qué la integración federal es
+              clave.
+   Fuente:    Notas de entidades del sector (por ejemplo, CAME).
+   Botón:     Defensa Sectorial -> servicio-representacion.html
+
+7. Digitalizarse ya no es opcional
+   Categoría: Capacitación y Digitalización
+   Bajada:    Marketing digital, redes sociales y venta online: por
+              dónde empezar sin perder el foco del negocio.
+   Fuente:    Cámara Argentina de Comercio Electrónico (CACE),
+              informes y guías.
+   Botón:     Ver Cursos -> servicio-formacion.html
+
+8. Por qué sumarte a una cámara empresarial
+   Categoría: Representación Institucional
+   Bajada:    Las cámaras son el puente entre el Estado, el sector
+              privado y los emprendedores. Qué ganás al formar parte de
+              una.
+   Fuente:    Observatorio Nacional de Cámaras Empresarias (citado en
+              el informe).
+   Botón:     Asociate a la Cámara -> contact.html
+
+9. Mujeres que emprenden
+   Categoría: Mujeres Emprendedoras
+   Bajada:    Presentación del área de Mujeres Emprendedoras de la
+              Cámara: objetivos, actividades y cómo participar.
+   Fuente:    Contenido propio de la Cámara.
+   Botón:     Quiero participar -> contact.html
+
+10. Agenda: ferias y encuentros del mes
+   Categoría: Ferias y Eventos
+   Bajada:    Ferias, exposiciones y encuentros empresariales donde
+              mostrar tu marca y ampliar contactos.
+   Fuente:    Sitios oficiales de cada feria o evento.
+   Botón:     Ver Eventos -> servicio-eventos.html
+
+Dato del informe útil para el artículo 8 o como destacado: las PyMEs
+representan el 98% de las empresas empleadoras y alrededor del 50% del
+empleo registrado. Antes de publicarlo hay que citar la fuente exacta y
+su fecha, porque el informe no la indica.
+
+--------------------------------------------------------------------
+4.5 Estructura de cada artículo (página de detalle)
+--------------------------------------------------------------------
+  Título
+  Categoría y fecha
+  Imagen
+  Introducción: el problema, en 2 o 3 líneas
+  Desarrollo: 3 subtítulos cortos
+  "Para tener en cuenta": viñetas con los puntos clave
+  "Fuente": enlace externo (ver punto 5)
+  Cierre: cómo ayuda la Cámara, con su botón
+
+
+====================================================================
+5. CONTENIDO EXTERNO: QUÉ MOSTRAR Y CON QUÉ REGLAS
+====================================================================
+
+--------------------------------------------------------------------
+5.1 Tipos de contenido externo
+--------------------------------------------------------------------
+a) Enlaces a fuentes oficiales
+   Para que el emprendedor consulte datos vigentes (montos, trámites,
+   requisitos) sin que el sitio tenga que actualizarlos:
+     - ARCA (Monotributo):                https://www.arca.gob.ar
+     - Argentina.gob.ar, Centro de ayuda PyME (ya se usa en el correo
+       de confirmación de mailer.php)
+     - Trámites a Distancia:              https://tramitesadistancia.gob.ar
+     - BCRA (usuarios financieros):       https://www.bcra.gob.ar
+     - Agencias de recaudación provinciales, para Ingresos Brutos
+
+b) Entidades del sector citadas en el informe
+     - CAME (Confederación Argentina de la Mediana Empresa)
+     - CACE (Cámara Argentina de Comercio Electrónico)
+     - Observatorio Nacional de Cámaras Empresarias
+
+c) Videos
+   blog.html ya tiene un formato de nota con video que se abre en una
+   ventana emergente. Sirve para charlas y talleres de la Cámara
+   publicados en su canal de YouTube.
+
+d) Agenda de eventos de terceros
+   Ferias y exposiciones regionales y nacionales, con enlace al sitio
+   oficial de cada evento.
+
+--------------------------------------------------------------------
+5.2 Reglas para usarlo
+--------------------------------------------------------------------
+- Resumir con palabras propias y enlazar a la fuente. No copiar
+  artículos de otros sitios.
+- Indicar siempre el nombre de la fuente y la fecha de consulta.
+- Montos, alícuotas y categorías cambian seguido: no escribirlos en la
+  nota, enlazar a la fuente oficial.
+- Los enlaces externos se abren en una pestaña nueva.
+- Verificar cada URL antes de publicar. Las de este documento son las
+  direcciones conocidas de cada organismo, pero no las comprobé.
+
+
+====================================================================
+6. DECISIONES PENDIENTES
+====================================================================
+
+1. Comercio Exterior: la home ofrece "Exportación" y "Productos
+   argentinos para nuevos mercados", y el menú tiene "Comercio
+   Exterior", pero no hay página de ese servicio. Opciones: crear una
+   sexta página servicio-*.html, o quitar esas referencias.
+
+2. Páginas de artículos: una página por artículo (como se hizo con los
+   servicios) o una sola blog-details.html.
+
+3. Buscador del blog: quitarlo o implementarlo con JavaScript.
+
+4. Pestaña "Estructura Organizacional": renombrarla o cambiar su
+   contenido (punto 2.8).
+
+5. Redes sociales y WhatsApp: hacen falta las URLs y el número reales.
+
+6. Páginas legales: privacidad, términos y cookies. ¿Quién redacta los
+   textos?
+
+7. Orden de trabajo: primero los enlaces de index.html (cambios chicos)
+   o primero blog.html.
