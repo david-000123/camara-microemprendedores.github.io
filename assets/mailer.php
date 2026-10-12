@@ -1,5 +1,6 @@
 <?php
 header('Content-Type: application/json; charset=utf-8');
+date_default_timezone_set('America/Argentina/Buenos_Aires');
 
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     http_response_code(405);
@@ -17,9 +18,10 @@ require __DIR__ . '/vendor/autoload.php';
 $nombreRaw  = is_string($_POST['name']  ?? null) ? trim($_POST['name'])  : '';
 $email      = is_string($_POST['email'] ?? null) ? trim($_POST['email']) : '';
 $mensajeRaw = is_string($_POST['message'] ?? null) ? trim($_POST['message']) : '';
+$privacidad = is_string($_POST['privacy'] ?? null) ? trim($_POST['privacy']) : '';
 
 // ─── 2. VALIDAR CAMPOS ───────────────────────────────────────────────────────
-// Mismas reglas que assets/js/ajax-form.js. Obligatorios: name y email (message es opcional).
+// Mismas reglas que assets/js/ajax-form.js. Obligatorios: name, email y privacy (message es opcional).
 // 'fields' indica qué campo falló y por qué: 'required' (vacío) o 'format' (email inválido).
 $errores = [];
 $titulos = [];
@@ -34,6 +36,12 @@ if ($email === '') {
     $titulos[]        = 'Email';
 } elseif (!preg_match('/^[^\s@]+@[^\s@]+\.[^\s@]+$/', $email) || !filter_var($email, FILTER_VALIDATE_EMAIL)) {
     $errores['email'] = 'format';
+}
+
+// Consentimiento: la casilla de la Política de Privacidad es obligatoria.
+if ($privacidad !== '1') {
+    $errores['privacy'] = 'required';
+    $titulos[]          = 'Aceptar la Política de Privacidad';
 }
 
 if ($errores) {
@@ -52,10 +60,11 @@ $nombre       = htmlspecialchars($nombreRaw);
 $mensaje      = htmlspecialchars($mensajeRaw);
 $mensajeTexto = $mensaje !== '' ? $mensaje : '(sin mensaje)';
 $emailHtml    = htmlspecialchars($email);
+$fechaConsentimiento = date('d/m/Y H:i') . ' (hora de Argentina)';
 
 // ─── 3. CONFIGURACIÓN SMTP ───────────────────────────────────────────────────
-// La contraseña de aplicación de Gmail NO va en el código: se lee de la variable
-// de entorno GMAIL_APP_PASSWORD (16 caracteres, con o sin espacios).
+// Ni la cuenta ni la contraseña de aplicación de Gmail van en el código: se leen de
+// las variables de entorno GMAIL_USER y GMAIL_APP_PASSWORD (16 caracteres, con o sin espacios).
 function leerEntorno(string $nombre): string
 {
     $valor = getenv($nombre);
@@ -65,12 +74,12 @@ function leerEntorno(string $nombre): string
     return trim((string) $valor);
 }
 
-$GMAIL_USER = 'kaczdavid3@gmail.com';
+$GMAIL_USER = leerEntorno('GMAIL_USER');
 $GMAIL_PASS = str_replace(' ', '', leerEntorno('GMAIL_APP_PASSWORD'));
 $EMPRESA    = 'Cámara de Trabajadores Microemprendedores de la R.A.';
 
-if ($GMAIL_PASS === '') {
-    error_log('mailer.php: falta la variable de entorno GMAIL_APP_PASSWORD.');
+if ($GMAIL_USER === '' || $GMAIL_PASS === '') {
+    error_log('mailer.php: faltan las variables de entorno GMAIL_USER y/o GMAIL_APP_PASSWORD.');
     http_response_code(500);
     exit(json_encode(['success' => false, 'message' => 'El servicio de correo no está configurado. Intentá más tarde.']));
 }
@@ -113,10 +122,14 @@ try {
                     <td style='padding:10px; font-weight:bold;'>Mensaje:</td>
                     <td style='padding:10px;'>$mensajeTexto</td>
                 </tr>
+                <tr>
+                    <td style='padding:10px; font-weight:bold;'>Consentimiento:</td>
+                    <td style='padding:10px;'>Aceptó la Política de Privacidad el $fechaConsentimiento</td>
+                </tr>
             </table>
         </div>
     ";
-    $mailEmpresa->AltBody = "Nombre: $nombre\nEmail: $email\nMensaje: $mensajeTexto";
+    $mailEmpresa->AltBody = "Nombre: $nombre\nEmail: $email\nMensaje: $mensajeTexto\nConsentimiento: aceptó la Política de Privacidad el $fechaConsentimiento";
     $mailEmpresa->send();
 
     // ─── 5. EMAIL DE CONFIRMACIÓN AL SOLICITANTE ──────────────────────────────

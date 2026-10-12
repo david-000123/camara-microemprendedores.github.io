@@ -20,6 +20,10 @@ $(function() {
 		if (!field.is('[required]')) {
 			return '';
 		}
+		// A checkbox is valid only when it is checked.
+		if (field.is(':checkbox')) {
+			return field.prop('checked') ? '' : 'required';
+		}
 		var value = $.trim(field.val());
 		if (value === '') {
 			return 'required';
@@ -93,7 +97,7 @@ $(function() {
 
 	// Once a field is marked as invalid, re-check it while the user types:
 	// the error disappears as soon as the value is correct.
-	form.on('input', 'input, textarea', function() {
+	form.on('input change', 'input, textarea', function() {
 		var field = $(this);
 		if (field.hasClass('is-invalid')) {
 			setFieldError(field, getError(field));
@@ -157,7 +161,9 @@ $(function() {
 		})
 		.done(function() {
 			// Clear the form and the messages.
-			$('#contact-form input,#contact-form textarea').val('').removeClass('is-invalid').removeAttr('aria-invalid');
+			$('#contact-form input,#contact-form textarea').not(':checkbox').val('');
+			$('#contact-form :checkbox').prop('checked', false);
+			$('#contact-form input,#contact-form textarea').removeClass('is-invalid').removeAttr('aria-invalid');
 			formMessages.empty().removeClass('error success');
 
 			openModal();

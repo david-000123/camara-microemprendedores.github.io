@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+Disallow: /assets/mailer.php
+Disallow: /assets/vendor/
+Disallow: /error.html
+
+Sitemap: https://www.DOMINIO-PENDIENTE.com.ar/sitemap.xml
